@@ -11,6 +11,10 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def confirm
+    @article = Article.new(article_params)
+  end
+
   def show
   end
 
