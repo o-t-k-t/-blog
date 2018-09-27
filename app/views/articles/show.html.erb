@@ -1,3 +1,5 @@
 <h1>ブログ詳細</h1>
 <p>タイトル: <%= @article.title %></p>
 <p>内容: <%= @article.content %></p>
+<%= link_to '編集', edit_article_path(@article.id), data: { confirm: '本当に編集していいですか？' } %>
+<%= link_to "ブログ一覧画面に戻る", articles_path %>
