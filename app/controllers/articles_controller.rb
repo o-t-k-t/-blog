@@ -1,13 +1,36 @@
 class ArticlesController < ApplicationController
   before_action :fetch_article, only:[:show, :edit, :update, :destroy]
   
+  def index
+    @articles = Article.all
+  end
+
+  def show
+  end
+
   def new
     @article = Article.new
   end
 
+  def edit
+  end
+  
   def create
     @article = Article.new(article_params)
     @article.save
+    redirect_to articles_path
+  end
+
+  def update
+    if @article.update(article_params)
+      redirect_to article_path, notice: 'ブログを更新しました'
+    else 
+      render edit_article_path
+    end
+  end
+
+  def destroy
+    @article.destroy
     redirect_to articles_path
   end
 
@@ -16,29 +39,6 @@ class ArticlesController < ApplicationController
     render new_article_path if @article.invalid?
   end
 
-  def show
-  end
-
-  def edit
-  end
-  
-  def update
-    if @article.update(article_params)
-      redirect_to article_path, notice: 'ブログを更新しました'
-    else 
-      render 'edit'
-    end
-  end
-
-  def index
-    @articles = Article.all
-  end
-
-  def destroy
-    @article.destroy
-    redirect_to articles_path
-  end
-  
   private
   
   def article_params
