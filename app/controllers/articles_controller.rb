@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to article_path, notice: 'ブログを更新しました'
     else 
-      render edit_article_path
+      render 'edit'
     end
   end
 
@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
 
   def confirm
     @article = Article.new(article_params)
-    render new_article_path if @article.invalid?
+    render 'new' if @article.invalid?
   end
 
   private
