@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
 
   def confirm
     @article = Article.new(article_params)
+    render new_article_path if @article.invalid?
   end
 
   def show
