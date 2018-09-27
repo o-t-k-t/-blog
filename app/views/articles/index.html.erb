@@ -1,19 +1,21 @@
 <h1>ブログ一覧</h1>
 <p><%= notice %></p>
 <br>
+
 <table>
   <tr>
     <th>タイトル</th>
     <th>内容</th>
   </tr>
-  <% @articles.each do |a|  %>
+  <% @articles.each do |article|  %>
     <tr>
-      <td><%= a.title %></td>
-      <td><%= a.content %></td>
-      <td><%= link_to '詳細', article_path(a.id) %></td>
-      <td><%= link_to '編集', edit_article_path(a.id), data: { confirm: '本当に編集していいですか？' } %></td>
-      <td><%= link_to '削除', article_path(a.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+      <td><%= article.title %></td>
+      <td><%= article.content %></td>
+      <td><%= link_to '詳細', article_path(article.id) %></td>
+      <td><%= link_to '編集', edit_article_path(article.id), data: { confirm: '本当に編集していいですか？' } %></td>
+      <td><%= link_to '削除', article_path(article.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
     </tr>
   <% end %>
-  <%= link_to '新規作成', new_article_path%>
 </table>
+
+<%= link_to '新規作成', new_article_path%>
